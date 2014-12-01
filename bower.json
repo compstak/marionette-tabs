@@ -1,0 +1,32 @@
+{
+  "name": "marionette-tabbedview",
+  "version": "0.0.0",
+  "authors": [
+    "Stu Kabakoff <stuart@compstak.com>"
+  ],
+  "description": "A tabbed view widget for Marionette",
+  "main": "TabbedView.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "tabs",
+    "tabbed",
+    "view",
+    "tab",
+    "widget",
+    "marionette",
+    "backbone"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "marionette": "^1.8.3"
+  }
+}
