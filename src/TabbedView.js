@@ -2,7 +2,7 @@ define(function (require) {
     'use strict';
 
     var Marionette = require('backbone.marionette');
-    var TabItemView = require('./src/TabItemView');
+    var TabItemView = require('./TabItemView');
 
     return Marionette.CompositeView.extend({
         

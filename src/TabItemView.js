@@ -1,11 +1,12 @@
 define(function (require) {
     'use strict';
 
-    var template = require('hbs!./tabItemTemplate');
     var Marionette = require('backbone.marionette');
 
     return Marionette.ItemView.extend({
-        template: template,
+        template: function (model) {
+            return '<a href="' + model.url + '">' + model.title + '</a>';
+        },
         tagName: 'li'
     });
 });
