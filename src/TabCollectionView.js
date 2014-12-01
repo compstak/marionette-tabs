@@ -4,7 +4,7 @@ define(function (require) {
     var Marionette = require('backbone.marionette');
     var TabItemView = require('./TabItemView');
 
-    return Marionette.CompositeView.extend({
+    return Marionette.CollectionView.extend({
         
         tagName: 'ul',
         
@@ -13,9 +13,10 @@ define(function (require) {
         itemView: TabItemView,
 
         events: {
-            'click a': function (event) {
+            'click a[data-id]': function (event) {
                 event.preventDefault();
-                this.options.onclick(event);
+                var id = event.target.getAttribute('data-id');
+                this.options.onTabSelect(id);
             }
         }
 

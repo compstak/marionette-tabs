@@ -1,9 +1,39 @@
 <!doctype html>
 <html>
     <head>
-        <title>Marionette TabView Test</title>
+        <title>Marionette TabBehavior Test</title>
+        <style type="text/css">
+            ul, li {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            li {
+                display: inline-block;
+                width: 200px;
+                margin: 0 5px 0 0;
+                border: 1px solid black;
+                background-color: white;
+                position: relative;
+                z-index: 1;
+            }
+            li.selected {
+                border-bottom: none;
+            }
+            .content-container {
+                margin-top: -1;
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
+        <div id="content_area">
+        </div>
+
+        <script type="text/template" id="tab_layout">
+            <div class="tab-container"></div>
+            <div class="content-container"></div>
+        </script>
 
     </body>
     <script src="/bower_components/requirejs/require.js"></script>

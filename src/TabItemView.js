@@ -5,8 +5,8 @@ define(function (require) {
 
     return Marionette.ItemView.extend({
         template: function (model) {
-            return '<a href="' + model.url + '">' + model.title + '</a>';
+            return '<a data-id="' + model.id + '" href="' + model.url + '">' + model.title + '</a>';
         },
-        tagName: 'li'
+        tagName: 'li',
     });
 });
