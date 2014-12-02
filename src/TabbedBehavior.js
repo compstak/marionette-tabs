@@ -6,7 +6,7 @@ define(function (require) {
 
     return Marionette.Behavior.extend({
         
-        initialize: function (options) {
+        initialize: function () {
             this.tabs = this.view.tabsCollection;
             this.currentView = null;
         },
@@ -16,9 +16,15 @@ define(function (require) {
         },
 
         onRender: function () {
-            var tabsView = new this.options.TabCollectionView({
+
+            var extendObject = {
                 collection: this.tabs
-            });
+            };
+
+            if (this.options.itemView) {
+                extendObject.itemView = this.options.itemView;
+            }
+            var tabsView = new this.options.TabCollectionView(extendObject);
 
             this.view.tabs.show(tabsView);
             var defaultTab;
@@ -47,7 +53,7 @@ define(function (require) {
             this.currentTab = tabView;
 
             tabView.$el.addClass('selected');
-            var newView = new (tab.get('View'))(tabView.model.options);
+            var newView = new (tab.get('View'))();
             this.view.content.show(newView);
         }
 

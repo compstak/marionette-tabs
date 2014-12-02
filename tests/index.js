@@ -9,6 +9,8 @@ define(function (require) {
 
     var tabsCollection = new Backbone.Collection();
 
+    var DefaultItemView = require('src/TabItemView');
+
     tabsCollection.add(new TabItem({
         id: 'one',
         title: 'one',
@@ -16,7 +18,7 @@ define(function (require) {
         View: Marionette.ItemView.extend({
             tagName: 'fart',
             template: function () { return 'one!'; }
-        })
+        }),
     }));
 
     tabsCollection.add(new TabItem({
@@ -44,6 +46,7 @@ define(function (require) {
             TabbedBehavior: {
                 behaviorClass: TabbedBehavior,
                 defaultTab: 'two'
+                //itemView: DefaultItemView.extend({template: function (model) { return '<i>' + model.title + '</i>'; }})
             }
         }
     }))();
