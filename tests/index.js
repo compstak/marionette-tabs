@@ -1,35 +1,27 @@
 define(function (require) {
-    'use strict';
 
-    var Backbone = require('backbone');
     var Marionette = require('backbone.marionette');
     
-    var TabItem = require('src/TabItem');
     var TabbedBehavior = require('src/TabbedBehavior');
+    var TabsCollection = require('src/TabsCollection');
 
-    var tabsCollection = new Backbone.Collection();
+    var tabs = new TabsCollection();
 
-    var DefaultItemView = require('src/TabItemView');
-
-    tabsCollection.add(new TabItem({
+    tabs.add({
         id: 'one',
         title: 'one',
-        url: '/one',
-        View: Marionette.ItemView.extend({
-            tagName: 'fart',
+        ContentView: Marionette.ItemView.extend({
             template: function () { return 'one!'; }
         }),
-    }));
+    });
 
-    tabsCollection.add(new TabItem({
+    tabs.add({
         id: 'two',
         title: 'two',
-        url: '/two',
-        View: Marionette.ItemView.extend({
-            tagName: 'fart',
+        ContentView: Marionette.ItemView.extend({
             template: function () { return 'two!'; }
         })
-    }));
+    });
 
     var layout = new (Marionette.Layout.extend({
         
@@ -40,13 +32,12 @@ define(function (require) {
             'content': '.content-container'
         },
 
-        tabsCollection: tabsCollection,
-
         behaviors: {
             TabbedBehavior: {
                 behaviorClass: TabbedBehavior,
-                defaultTab: 'two'
-                //itemView: DefaultItemView.extend({template: function (model) { return '<i>' + model.title + '</i>'; }})
+                tabs: tabs,
+                defaultTab: 'two',
+                //tabItemView: DefaultItemView.extend({template: function (model) { return '<i>' + model.title + '</i>'; }})
             }
         }
     }))();

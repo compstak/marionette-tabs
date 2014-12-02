@@ -14,8 +14,8 @@ define(function (require) {
                 throw new Error('TabItem title of the tab with id "' + options.id + '" is not a string. It is a ' + typeof options.title);
             }
 
-            if (!options.View && !options.View.render) {
-                throw new Error('TabItem View of the tab with id "' + options.id + '" does not have a render function');
+            if (!options.ContentView && !options.ContentView.render) {
+                throw new Error('TabItem ContentView of the tab with id "' + options.id + '" does not have a render function');
             }
 
             return Backbone.Model.prototype.initialize.call(this, options);
