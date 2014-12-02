@@ -8,17 +8,9 @@ define(function (require) {
         
         tagName: 'ul',
         
-        className: 'tab_item_view',
+        className: 'tab-item-view',
 
         itemView: TabItemView,
-
-        events: {
-            'click a[data-id]': function (event) {
-                event.preventDefault();
-                var id = event.target.getAttribute('data-id');
-                this.options.onTabSelect(id);
-            }
-        }
 
     });
 });

@@ -14,15 +14,17 @@
                 margin: 0 5px 0 0;
                 border: 1px solid black;
                 background-color: white;
-                position: relative;
-                z-index: 1;
-            }
-            li.selected {
                 border-bottom: none;
             }
+            li.selected {
+                position: relative;
+                z-index: 2;             
+            }
             .content-container {
-                margin-top: -1;
+                margin-top: -1px;
                 border: 1px solid black;
+                position: relative;
+                z-index: 1;
             }
         </style>
     </head>

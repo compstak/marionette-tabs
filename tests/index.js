@@ -32,7 +32,7 @@ define(function (require) {
     var layout = new (Marionette.Layout.extend({
         
         template: '#tab_layout',
-        
+
         regions: {
             'tabs': '.tab-container',
             'content': '.content-container'
@@ -42,7 +42,8 @@ define(function (require) {
 
         behaviors: {
             TabbedBehavior: {
-                behaviorClass: TabbedBehavior
+                behaviorClass: TabbedBehavior,
+                defaultTab: 'two'
             }
         }
     }))();

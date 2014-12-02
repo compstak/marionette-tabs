@@ -11,26 +11,44 @@ define(function (require) {
             this.currentView = null;
         },
 
-        onRender: function () {
-            var tabsView = new TabCollectionView({
-                collection: this.tabs, 
-                onTabSelect: this.switchTabs.bind(this)
-            });
-
-            console.log(tabsView);
-            tabsView.render();
-            this.view.tabs.show(tabsView);
+        defaults: {
+            TabCollectionView: TabCollectionView
         },
 
-        switchTabs: function (tabId) {
-            console.log('hiiiiii!!');
+        onRender: function () {
+            var tabsView = new this.options.TabCollectionView({
+                collection: this.tabs
+            });
 
-            var tab = this.tabs.findWhere({id: tabId});
-            window.tab = tab;
+            this.view.tabs.show(tabsView);
+            var defaultTab;
 
-            this.currentView = new (tab.get('View'))();
-            this.view.content.show(this.currentView);
+            tabsView.children.forEach(function (childView) {
+                childView.on('select', this.switchTabs.bind(this));
+                if (childView.model.id === this.options.defaultTab) {
+                    defaultTab = childView;
+                }
+            }.bind(this));
 
+            if (!defaultTab) {
+                defaultTab = tabsView.children.first();
+            }
+
+            this.switchTabs(defaultTab);
+        },
+
+        switchTabs: function (tabView) {
+
+            var tab = this.tabs.findWhere({id: tabView.model.id});
+
+            if (this.currentTab) {
+                this.currentTab.$el.removeClass('selected');
+            }
+            this.currentTab = tabView;
+
+            tabView.$el.addClass('selected');
+            var newView = new (tab.get('View'))(tabView.model.options);
+            this.view.content.show(newView);
         }
 
     });

@@ -5,8 +5,17 @@ define(function (require) {
 
     return Marionette.ItemView.extend({
         template: function (model) {
-            return '<a data-id="' + model.id + '" href="' + model.url + '">' + model.title + '</a>';
+            return '<span>' + model.title + '</span>';
         },
+        
         tagName: 'li',
+
+        events: {
+            'click': function (event) {
+                event.preventDefault();
+                this.trigger('select', this);
+            }
+        }
+
     });
 });
