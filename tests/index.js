@@ -2,10 +2,9 @@ define(function (require) {
 
     var Marionette = require('backbone.marionette');
     
-    var TabbedBehavior = require('src/TabbedBehavior');
-    var TabsCollection = require('src/TabsCollection');
+    var Tabs = require('src/index');
 
-    var tabs = new TabsCollection();
+    var tabs = new Tabs.Collection();
 
     tabs.add({
         id: 'one',
@@ -33,8 +32,8 @@ define(function (require) {
         },
 
         behaviors: {
-            TabbedBehavior: {
-                behaviorClass: TabbedBehavior,
+            TabBehavior: {
+                behaviorClass: Tabs.Behavior,
                 tabs: tabs,
                 defaultTab: 'two',
                 //tabItemView: DefaultItemView.extend({template: function (model) { return '<i>' + model.title + '</i>'; }})

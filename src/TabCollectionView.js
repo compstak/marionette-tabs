@@ -12,5 +12,11 @@ define(function (require) {
 
         itemView: TabItemView,
 
+        itemEvents: {
+            'select': function (eventName, itemView) {
+                this.trigger('change', itemView);
+            }
+        }
+
     });
 });

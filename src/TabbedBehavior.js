@@ -25,6 +25,8 @@ define(function (require) {
 
         onRender: function () {
 
+            var self = this;
+
             var extendObject = {
                 collection: this.options.tabs
             };
@@ -35,15 +37,20 @@ define(function (require) {
             var tabsView = new this.options.TabCollectionView(extendObject);
 
             this.view.tabs.show(tabsView);
+
+            tabsView.on('change', function (tabView) {
+                self.switchTabs(tabView);
+            });
+
             var defaultTab;
-
-            tabsView.children.forEach(function (childView) {
-                childView.on('select', this.switchTabs.bind(this));
-                if (childView.model.id === this.options.defaultTab) {
-                    defaultTab = childView;
-                }
-            }.bind(this));
-
+            
+            if (this.options.defaultTab) {
+                tabsView.children.forEach(function (childView) {
+                    if (childView.model.id === self.options.defaultTab) {
+                        defaultTab = childView;
+                    }
+                });
+            }
             if (!defaultTab) {
                 defaultTab = tabsView.children.first();
             }
@@ -60,8 +67,15 @@ define(function (require) {
             }
             this.currentTab = tabView;
 
+            var options;
+            if (this.options.getOptions) {
+                options = this.options.getOptions();
+            } else if (this.options.options) {
+                options = this.options.options;
+            }
+
             tabView.$el.addClass('selected');
-            var newView = new (tab.get('ContentView'))();
+            var newView = new (tab.get('ContentView'))(options);
             this.view.content.show(newView);
         }
 

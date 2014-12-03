@@ -10,11 +10,10 @@ define(function (require) {
 
 	var Marionette = require('backbone.marionette');
 	
-	var TabbedBehavior = require('src/TabbedBehavior');
-	var TabsCollection = require('src/TabsCollection');
+	var Tab = require('marionette-tabs/index');
 
 	// This collection holds your tab objects
-	var tabs = new TabsCollection();
+	var tabs = new Tab.Collection();
 
 	// each TabItem object must have an id, title, and a view that 
 	// will be instantiated for the actual content of the tab.
@@ -47,8 +46,8 @@ define(function (require) {
 		},
 
 		behaviors: {
-			TabbedBehavior: {
-				behaviorClass: TabbedBehavior,
+			TabBehavior: {
+				behaviorClass: Tab.Behavior,
 				tabs: tabs
 			}
 		}
@@ -65,14 +64,16 @@ define(function (require) {
 		// your layout options, including the 'tabs' and 'content' regions.
 
 		behaviors: {
-			TabbedBehavior: {
+			TabBehavior: {
 				// required
-				behaviorClass: TabbedBehavior, // the actual behavior
+				behaviorClass: Tab.Behavior, // the actual behavior
 				tabs: tabs, // collection of tab objects
 
 				// optional
-				tabItemView: CustomItemView, // an item view that will be used for the tabs
+				tabItemView: CustomItemView, // a view that will be used for the tabs
 				defaultTab: 'tabId', // the tab that will be selected on initial view.
+				options: { model: thingy }, // options that will be passed to the content views
+				getOptions: function () { return { model: thingy }; }, // a function that will be called just before the view is created to get the options.
 			}
 		}
 	});
