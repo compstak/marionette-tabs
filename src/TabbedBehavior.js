@@ -20,7 +20,7 @@ define(function (require) {
         },
 
         defaults: {
-            TabCollectionView: TabCollectionView
+            tabCollectionView: TabCollectionView
         },
 
         onRender: function () {
@@ -34,7 +34,7 @@ define(function (require) {
             if (this.options.tabItemView) {
                 extendObject.itemView = this.options.tabItemView;
             }
-            var tabsView = new this.options.TabCollectionView(extendObject);
+            var tabsView = new this.options.tabCollectionView(extendObject);
 
             this.view.tabs.show(tabsView);
 
