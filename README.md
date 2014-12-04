@@ -1,4 +1,4 @@
-# Marionette.TabbedBehavior
+# Marionette.Tabs
 
 This is a Marionette behavior that adds tabbed UI funcitonality to a Marionette layout. It has defaults to create a simple tabbed layout, but you may create custom views and objects for more advanced usage.
 
@@ -40,18 +40,18 @@ define(function (require) {
 		
 		template: '#tab_layout',
 
-		// You layout must have regions called 'tabs' and 'layout'
-		// Other regions will simply be ignored.
+		// Your layout must have regions called 'tabs' and 'layout'
+		// Other regions will be ignored.
 		regions: {
 			'tabs': '.tab-container',
 			'content': '.content-container'
 		},
 
+		// Add the behavior to the layout.
 		behaviors: {
-			// Add the behavior to the layout.
 			TabBehavior: {
 				behaviorClass: Tab.Behavior,
-				tabs: tabs
+				tabs: Tabs
 			}
 		}
 	});
@@ -67,7 +67,7 @@ A tab model is a Backbone model that will be used to identify and render the tab
 - `title` - a string that will be used to label the tab in the UI.
 - `ContentView` - a Marionette view that will be used to render the content of this tab. It can be an ItemView, CollectionView, LayoutView, or anything else that Marionette can render in a region of a layout.
 
-## Behavior
+## Options
 
 All options go on the behavior.
 
