@@ -55,7 +55,13 @@ define(function (require) {
                 defaultTab = tabsView.children.first();
             }
 
-            this.switchTabs(defaultTab);
+            if (defaultTab) {
+                this.switchTabs(defaultTab);
+            } else {
+                this.listenToOnce(this.options.tabs, 'add', function () {
+                    this.switchTabs(tabsView.children.first());
+                }.bind(this));
+            }
         },
 
         switchTabs: function (tabView) {
@@ -69,7 +75,7 @@ define(function (require) {
 
             var options;
             if (this.options.getOptions) {
-                options = this.options.getOptions();
+                options = this.options.getOptions(tabView.model);
             } else if (this.options.options) {
                 options = this.options.options;
             }

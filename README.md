@@ -98,8 +98,7 @@ Example with all options:
 		tabCollectionView: CustomCollectionView, // a collection view that will be used to render the tabs.
 		defaultTab: 'tabId', // the tab that will be selected on initial view.
 		options: { model: thingy }, // options that will be passed to the content views.
-		getOptions: function () { return { model: thingy }; }, // a function that will be called just before the view is created to get the options.
+		getOptions: function (model) { return { id: model.get('id') }; }, // a function that will be called just before the view is created to get the options.
 	}
-
 
 ```

@@ -14,6 +14,7 @@ define(function (require) {
 
         itemEvents: {
             'select': function (eventName, itemView) {
+                console.log('triggering select');
                 this.trigger('change', itemView);
             }
         }
