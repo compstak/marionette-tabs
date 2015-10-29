@@ -5,7 +5,7 @@ define(function (require) {
     var TabCollectionView = require('./TabCollectionView');
 
     return Marionette.Behavior.extend({
-        
+
         initialize: function () {
             if (!this.view.tabs) {
                 throw new Error('Tried to add TabbedBehavior to a layout without a "tabs" region.');
@@ -32,7 +32,7 @@ define(function (require) {
             };
 
             if (this.options.tabItemView) {
-                extendObject.itemView = this.options.tabItemView;
+                extendObject.childView = this.options.tabItemView;
             }
             var tabsView = new this.options.tabCollectionView(extendObject);
 
@@ -43,7 +43,7 @@ define(function (require) {
             });
 
             var defaultTab;
-            
+
             if (this.options.defaultTab) {
                 tabsView.children.forEach(function (childView) {
                     if (childView.model.id === self.options.defaultTab) {
