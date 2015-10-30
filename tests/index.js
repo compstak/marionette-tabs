@@ -36,6 +36,9 @@ define(function (require) {
                 behaviorClass: Tabs.Behavior,
                 tabs: tabs,
                 defaultTab: 'two',
+                tabCls: 'tab-item',
+                tabContainerCls: 'tabs-menu',
+                selectedTabCls: 'tab-item_selected',
                 // tabItemView: Tabs.ItemView.extend({template: function (model) { return '<i>' + model.title + '</i>'; }})
             }
         }

@@ -8,8 +8,6 @@ define(function (require) {
 
         tagName: 'ul',
 
-        className: 'tab-item-view',
-
         childView: TabItemView,
 
         childEvents: {

@@ -20,7 +20,10 @@ define(function (require) {
         },
 
         defaults: {
-            tabCollectionView: TabCollectionView
+            tabCollectionView: TabCollectionView,
+            tabCls: '',
+            tabContainerCls: 'tab-item-view',
+            selectedTabCls: 'selected'
         },
 
         onRender: function () {
@@ -28,7 +31,11 @@ define(function (require) {
             var self = this;
 
             var extendObject = {
-                collection: this.options.tabs
+                collection: this.options.tabs,
+                className: this.options.tabContainerCls,
+                childViewOptions: {
+                    className: this.options.tabCls
+                }
             };
 
             if (this.options.tabItemView) {
@@ -69,7 +76,7 @@ define(function (require) {
             var tab = this.options.tabs.findWhere({id: tabView.model.id});
 
             if (this.currentTab) {
-                this.currentTab.$el.removeClass('selected');
+                this.currentTab.$el.removeClass(this.options.selectedTabCls);
             }
             this.currentTab = tabView;
 
@@ -80,7 +87,7 @@ define(function (require) {
                 options = this.options.options;
             }
 
-            tabView.$el.addClass('selected');
+            tabView.$el.addClass(this.options.selectedTabCls);
             var newView = new (tab.get('ContentView'))(options);
             this.view.content.show(newView);
 

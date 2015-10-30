@@ -18,13 +18,13 @@ For the most basic usage you will only need to create a `Tabs.Collection` for yo
 define(function (require) {
 
 	var Marionette = require('backbone.marionette');
-	
+
 	var Tab = require('marionette-tabs/index');
 
 	// This collection holds your tab objects
 	var tabs = new Tab.Collection();
 
-	// each TabItem object must have an id, title, and a view that 
+	// each TabItem object must have an id, title, and a view that
 	// will be instantiated for the actual content of the tab.
 	tabs.add({
 		id: 'tab-one',
@@ -37,7 +37,7 @@ define(function (require) {
 
 	// This is the layout that you create.
 	return Marionette.Layout.extend({
-		
+
 		template: '#tab_layout',
 
 		// Your layout must have regions called 'tabs' and 'layout'
@@ -83,6 +83,9 @@ Optional:
 - `defaultTab` - a string that should correspond to the id property of a tab model.  By default first tab will be used.
 - `getOptions` - a function that returns an object to be used as options for the content views.
 - `option` - if getOptions is not set, this object will be used instead.
+- `tabContainerCls` - custom CSS-class that will be added for the tab menu. By default, "tab-item-view".
+- `tabCls` - custom CSS-class that will be added for each tab item. Empty by default.
+- `selectedTabCls` - CSS-class that will be used to mark tab item as selected. By default, "selected".
 
 Example with all options:
 
@@ -94,6 +97,9 @@ Example with all options:
 		tabs: tabs, // collection of tab objects
 
 		// optional
+		tabCls: 'my-tabs',
+		tabContainerCls: 'my-tab-item',
+		selectedTabCls: 'my-tab-item-selected',
 		tabItemView: CustomItemView, // a view that will be used for the tabs.
 		tabCollectionView: CustomCollectionView, // a collection view that will be used to render the tabs.
 		defaultTab: 'tabId', // the tab that will be selected on initial view.
