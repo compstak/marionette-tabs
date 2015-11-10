@@ -102,3 +102,19 @@ Example with all options:
 	}
 
 ```
+
+## Events
+
+When tab is switched, bahavior sends an event with name 'tabswitch' to a view. So you can subscribe to this event.
+
+Example:
+
+```javascript
+    initialize: function () {
+        this.listenTo(this, 'tabswitch', this.onTabSwitch);
+    }
+
+    onTabSwitch: function () {
+        console.log('Tab is switched!');
+    }
+```
