@@ -84,7 +84,7 @@ define(function (require) {
             var newView = new (tab.get('ContentView'))(options);
             this.view.content.show(newView);
 
-            this.view.trigger('marionette:tabs:switch', {tab: tab});
+            this.view.trigger('tabswitch', {tab: tab});
         }
 
     });
