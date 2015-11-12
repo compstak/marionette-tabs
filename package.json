@@ -1,6 +1,6 @@
 {
   "name": "marionette-tabs",
-  "version": "0.1.1",
+  "version": "2.0.0",
   "description": "This is a Marionette behavior that adds tabbed UI funcitonality to a Marionette layout. It has defaults to create a simple tabbed layout, but you may create custom views and objects for more advanced usage.",
   "main": "index.js",
   "directories": {
