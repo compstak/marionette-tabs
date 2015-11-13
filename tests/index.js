@@ -1,7 +1,7 @@
 define(function (require) {
 
     var Marionette = require('backbone.marionette');
-    
+
     var Tabs = require('src/index');
 
     var tabs = new Tabs.Collection();
@@ -22,8 +22,8 @@ define(function (require) {
         })
     });
 
-    var layout = new (Marionette.Layout.extend({
-        
+    var layout = new (Marionette.LayoutView.extend({
+
         template: '#tab_layout',
 
         regions: {
@@ -36,11 +36,11 @@ define(function (require) {
                 behaviorClass: Tabs.Behavior,
                 tabs: tabs,
                 defaultTab: 'two',
-                //tabItemView: DefaultItemView.extend({template: function (model) { return '<i>' + model.title + '</i>'; }})
+                // tabItemView: Tabs.ItemView.extend({template: function (model) { return '<i>' + model.title + '</i>'; }})
             }
         }
     }))();
-    
+
     layout.render();
 
     $('#content_area').append(layout.$el);

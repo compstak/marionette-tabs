@@ -5,14 +5,14 @@ define(function (require) {
     var TabItemView = require('./TabItemView');
 
     return Marionette.CollectionView.extend({
-        
+
         tagName: 'ul',
-        
+
         className: 'tab-item-view',
 
-        itemView: TabItemView,
+        childView: TabItemView,
 
-        itemEvents: {
+        childEvents: {
             'select': function (eventName, itemView) {
                 this.trigger('change', itemView);
             }

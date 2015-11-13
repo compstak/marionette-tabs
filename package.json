@@ -1,0 +1,15 @@
+{
+  "name": "marionette-tabs",
+  "version": "2.0.0",
+  "description": "This is a Marionette behavior that adds tabbed UI funcitonality to a Marionette layout. It has defaults to create a simple tabbed layout, but you may create custom views and objects for more advanced usage.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/compstak/marionette-tabs.git"
+  },
+  "author": "Stu Kabakoff <stuart@compstak.com>",
+  "license": "MIT"
+}
